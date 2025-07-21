@@ -1,0 +1,260 @@
+# Contributing to TheoTech Neural Conscience
+
+First off, thank you for considering contributing to TheoTech Neural Conscience! It's people like you that help make AI safer and more ethical for everyone.
+
+## 🤝 Code of Conduct
+
+This project and everyone participating in it is governed by our Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to conduct@theotech.ai.
+
+## 🎯 How Can I Contribute?
+
+### Reporting Bugs
+
+Before creating bug reports, please check existing issues as you might find out that you don't need to create one. When you are creating a bug report, please include as many details as possible:
+
+- **Use a clear and descriptive title**
+- **Describe the exact steps to reproduce the problem**
+- **Provide specific examples**
+- **Describe the behavior you observed and expected**
+- **Include logs and screenshots if possible**
+- **Include your environment details**
+
+### Suggesting Enhancements
+
+Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion, please include:
+
+- **Use a clear and descriptive title**
+- **Provide a detailed description of the proposed enhancement**
+- **Explain why this enhancement would be useful**
+- **List any potential drawbacks**
+- **Include mockups or examples if applicable**
+
+### Your First Code Contribution
+
+Unsure where to begin? You can start by looking through these issues:
+
+- `good first issue` - issues which should only require a few lines of code
+- `help wanted` - issues which need extra attention
+- `documentation` - improvements or additions to documentation
+
+### Pull Requests
+
+1. Fork the repo and create your branch from `main`
+2. If you've added code that should be tested, add tests
+3. If you've changed APIs, update the documentation
+4. Ensure the test suite passes
+5. Make sure your code follows the style guidelines
+6. Issue that pull request!
+
+## 📝 Development Process
+
+### Setting Up Your Environment
+
+```bash
+# Clone your fork
+git clone https://github.com/your-username/theotech-conscience.git
+cd theotech-conscience
+
+# Add upstream remote
+git remote add upstream https://github.com/theotech/theotech-conscience.git
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements-dev.txt
+
+# Install pre-commit hooks
+pre-commit install
+```
+
+### Style Guidelines
+
+#### Python Style Guide
+
+- Follow [PEP 8](https://www.python.org/dev/peps/pep-0008/)
+- Use type hints for all function signatures
+- Maximum line length: 88 characters (Black default)
+- Use descriptive variable names
+
+```python
+# Good
+def calculate_divine_anxiety(
+    violation_score: float,
+    scar_tissue_factor: float,
+    temporal_factor: float = 1.0
+) -> float:
+    """
+    Calculate divine anxiety score based on violation parameters.
+    
+    Args:
+        violation_score: Severity of the violation (0-1)
+        scar_tissue_factor: Existing scar tissue strength
+        temporal_factor: Time-based multiplier
+        
+    Returns:
+        Divine anxiety score between 0 and 1
+    """
+    return min(
+        violation_score * scar_tissue_factor * temporal_factor * DIVINE_CONSTANT,
+        1.0
+    )
+
+# Bad
+def calc_anx(v, s, t=1):
+    return min(v * s * t * 0.618034, 1)
+```
+
+#### Documentation Style
+
+- Use Google-style docstrings
+- Include type information in docstrings
+- Provide examples for complex functions
+- Keep README files up to date
+
+#### Commit Messages
+
+- Use the present tense ("Add feature" not "Added feature")
+- Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
+- Limit the first line to 72 characters or less
+- Reference issues and pull requests liberally after the first line
+
+Example:
+```
+Add moral scar tissue persistence layer
+
+- Implement PostgreSQL storage for scar patterns
+- Add migration scripts for schema updates
+- Include benchmarks showing 10x performance improvement
+
+Fixes #123
+```
+
+### Testing
+
+#### Writing Tests
+
+- Write tests for all new functionality
+- Maintain test coverage above 90%
+- Use pytest for all tests
+- Mock external dependencies
+
+```python
+def test_divine_anxiety_calculation():
+    """Test divine anxiety increases with violation severity."""
+    calculator = DivineAnxietyCalculator()
+    
+    # Test low severity
+    low_anxiety = calculator.calculate_anxiety(
+        violation_score=0.1,
+        scar_tissue_factor=1.0
+    )
+    assert low_anxiety < 0.3
+    
+    # Test high severity
+    high_anxiety = calculator.calculate_anxiety(
+        violation_score=0.9,
+        scar_tissue_factor=2.0
+    )
+    assert high_anxiety > 0.7
+```
+
+#### Running Tests
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=src tests/
+
+# Run specific test file
+pytest tests/unit/test_divine_anxiety.py
+
+# Run with verbose output
+pytest -v
+
+# Run only marked tests
+pytest -m "not slow"
+```
+
+### Documentation
+
+- Update documentation with any API changes
+- Include code examples in documentation
+- Add docstrings to all public functions
+- Update the changelog
+
+## 🔄 Pull Request Process
+
+1. **Update the README.md** with details of changes to the interface
+2. **Update the CHANGELOG.md** with a note about your changes
+3. **Increase version numbers** in any examples files and the README.md
+4. **Ensure all tests pass** and coverage remains high
+5. **Get code review** from at least one maintainer
+6. **Squash commits** before merging if requested
+
+## 🏗️ Project Structure Guidelines
+
+When adding new features, follow this structure:
+
+```
+src/
+├── core/              # Core algorithms and mathematical models
+├── api/               # API endpoints and servers
+├── integrations/      # Third-party AI service integrations
+├── monitoring/        # Metrics and observability
+└── utils/            # Shared utilities
+
+tests/
+├── unit/             # Unit tests for individual components
+├── integration/      # Integration tests
+└── benchmarks/       # Performance benchmarks
+```
+
+## 🔍 Code Review Process
+
+All submissions require review. We use GitHub pull requests for this purpose. Consult [GitHub Help](https://help.github.com/articles/about-pull-requests/) for more information.
+
+### Review Criteria
+
+- **Correctness**: Does the code do what it claims?
+- **Testing**: Are there adequate tests?
+- **Documentation**: Is it well-documented?
+- **Style**: Does it follow our style guidelines?
+- **Performance**: Are there any performance concerns?
+- **Security**: Are there any security implications?
+
+## 📊 Performance Considerations
+
+When contributing performance-critical code:
+
+1. Include benchmarks showing the performance impact
+2. Profile your code to identify bottlenecks
+3. Consider memory usage, not just speed
+4. Document any trade-offs made
+
+## 🔒 Security Guidelines
+
+- Never commit secrets or API keys
+- Validate all inputs
+- Use parameterized queries for database operations
+- Follow the principle of least privilege
+- Report security vulnerabilities to support@constitutionalai.io
+
+## 🎉 Recognition
+
+Contributors who submit accepted PRs will be:
+- Added to our CONTRIBUTORS.md file
+- Mentioned in release notes
+- Invited to our private contributors Discord channel
+- Eligible for TheoTech swag (for significant contributions)
+
+## ❓ Questions?
+
+Feel free to:
+- Open an issue with your question
+- Email us at support@constitutionalai.io
+
+Thank you for helping make AI safer and more ethical! 🙏
